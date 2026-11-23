@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffdf7"><meta name="description" content="陪台灣孩子認識動物、學習尊重生命，看看公立收容所的浪浪資訊。">
+  <title>{{ title }}｜浪浪小小守護者</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{cream:'#FFFDF7',orange:'#FF8A3D',grass:'#4CAF50',ink:'#2D3748'},fontFamily:{sans:['Noto Sans TC','ui-sans-serif','system-ui']}}}}</script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-cream text-ink font-sans">
+  <header class="sticky top-0 z-30 bg-cream/95 backdrop-blur border-b border-orange-100">
+    <nav class="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-3" aria-label="主要導覽">
+      <a href="/" class="brand flex items-center gap-2 font-black"><span class="brand-mark">🐾</span><span>浪浪小小守護者<small>Stray Pals Kids</small></span></a>
+      <div class="flex items-center gap-2 md:gap-5 nav-links"><a href="/knowledge" class="nav-link">學院</a><a href="/adopt" class="nav-link">找家</a><a href="/quiz" class="nav-link">闖關</a><button class="favorite-counter" type="button" data-show-favorites aria-label="查看我的關注清單">💛 <span data-favorite-count>0</span></button></div>
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer class="mt-16 bg-[#2D3748] text-white"><div class="max-w-6xl mx-auto px-4 py-9 grid gap-5 md:grid-cols-2"><div><strong class="text-xl">🐾 浪浪小小守護者</strong><p class="mt-2 text-white/80">學會尊重生命，讓每個相遇都更友善。</p></div><p class="text-white/80">網站不需登入，也不收集個人資料。領養資訊由農業部開放資料提供，可能會更新；請由家長聯絡收容所確認。</p></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="favorites-panel" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="favorites-title"><div class="modal-card"><button class="modal-close" data-close-modal aria-label="關閉">×</button><h2 id="favorites-title" class="text-2xl font-black">💛 我的關注清單</h2><p class="mt-2 text-slate-600">喜歡的浪浪只保存在這台裝置的瀏覽器裡。</p><div id="favorites-list" class="mt-4 grid gap-3"></div><button class="button-secondary mt-5" data-close-modal>完成</button></div></div>
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body></html>
